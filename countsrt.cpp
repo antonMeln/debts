@@ -9,10 +9,13 @@ bool read(int *mas, int n) {
 	return true;
 }
 void countsort(int *mas, int n) {
-	int bet[256]={0}; int x = 0;
-	for (int i = 0; i < n; i++)  bet[mas[i]]++; 
+	int bet[256]; int x = 0;
+	for (int i = 0; i < 256; i++) bet[i] = 0;
+	for (int i = 0; i < n; i++) bet[mas[i]] = bet[mas[i]] + 1;
 	for (int j = 0; j < 256; j++) {
-		for (int i = 0; i < bet[j]; i++) 	mas[x] = j; x++;
+		for (int i = 0; i < bet[j]; i++) {
+			mas[x] = j; x++;
+		}
 	}
 }
 int main() {
